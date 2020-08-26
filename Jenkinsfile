@@ -12,7 +12,7 @@ node {
         server = Artifactory.server 'artifactory01'
 
         rtMaven = Artifactory.newMavenBuild()
-        rtMaven.tool = MAVEN_HOME
+        rtMaven.tool = 'MAVEN_HOME'
         rtMaven.deployer releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local', server: server
         rtMaven.resolver releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot', server: server
         rtMaven.deployer.deployArtifacts = false // Disable artifacts deployment during Maven run
