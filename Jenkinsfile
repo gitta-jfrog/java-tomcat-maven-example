@@ -18,6 +18,9 @@ node {
         rtMaven.deployer.deployArtifacts = false // Disable artifacts deployment during Maven run
 
         buildInfo = Artifactory.newBuildInfo()
+        
+         buildInfo.env.capture = true
+         buildInfo.env.collect()
     }
  
     stage ('Test') {
@@ -35,4 +38,15 @@ node {
     stage ('Publish build info') {
         server.publishBuildInfo buildInfo
     }
+    
+       stage ('Xray Scan') {
+        def scanConfig = [
+                'buildName'      : buildInfo.name,
+                'buildNumber'    : buildInfo.number,
+                'failBuild'      : false
+        ]
+        def scanResult = server.xrayScan scanConfig
+        echo scanResult as String
+   }
+   
 }
