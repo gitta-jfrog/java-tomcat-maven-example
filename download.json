@@ -2,7 +2,7 @@
   "files": [
     {
       "pattern": "generic-local",
-      "target": "Bazinga/",
+      "target": "Bazinga/"
     }
   ]
 }
