@@ -1,0 +1,9 @@
+{
+  "files": [
+    {
+      "pattern": "generic-local",
+      "target": "Bazinga/",
+      "excludePatterns": ["*file.tar.gz"]
+    }
+  ]
+}
